@@ -1,6 +1,6 @@
 var User=require("../Modules/User");
-const bcrypt=require("bcrypt");
-const e = require("express");
+const bcrypt = require("bcrypt");
+
 const jwt=require("jsonwebtoken");
 
 const signup=async(req,res)=>{

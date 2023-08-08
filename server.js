@@ -1,5 +1,7 @@
 const express=require("express");
+const mongoose=require("mongoose");
 const app=express();
+const userRouter=require("./Routers/UserRouter");
 const http=require("http");
 const {Server}=require("socket.io");
 const server=http.createServer(app);

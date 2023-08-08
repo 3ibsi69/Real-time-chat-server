@@ -62,10 +62,15 @@ const login=async(req,res)=>{
           res.send("invalid token 3");
         }
       };
+      const DELETEALL=async(req,res)=>{
+        var user=await User.deleteMany({});
+        res.send(user);
+    }
     
 module.exports={
     signup,
     login,
-    verify
+    verify,
+    DELETEALL
 }
         

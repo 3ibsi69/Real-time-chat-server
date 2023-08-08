@@ -19,7 +19,7 @@ const signup=async(req,res)=>{
             };
             var createdUser=await User.create(user);
             var token=jwt.sign({id:createdUser._id},"c21")
-            res.send([token]);
+            res.send(token);
         });
     });
 }
@@ -30,7 +30,7 @@ const login=async(req,res)=>{
         bcrypt.compare(req.body.password,user.password,(err,result)=>{
             if(result){
                 var token=jwt.sign({id:user._id},"c21");    
-                res.send([token]);
+                res.send(token);
             }
             else{
                 res.send({msg:"Wrong Password"});

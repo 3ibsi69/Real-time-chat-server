@@ -40,4 +40,27 @@ const login=async(req,res)=>{
             res.send({msg:"Wrong Email"});
         }
     };
+    const verify = async (req, res) => {
+        if (!req.body.token) {
+          res.send({ msg: false });
+        }
+        try {
+          var payload = jwt.verify(req.body.token, "c21");
+          if (payload) {
+            var user = await User.findOne({ _id: payload.id });
+            if (user) {
+              var token = jwt.sign({ id: user._id }, "c21");
+              res.send({ user });
+            } else {
+              res.send("invalid token 1");
+            }
+          } else {
+            res.send("invalid token 2 ");
+          }
+        } catch (err) {
+          console.log(err);
+          res.send("invalid token 3");
+        }
+      };
+    
         

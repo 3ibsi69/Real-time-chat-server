@@ -1,21 +1,24 @@
-const express = require("express");
-const mongoose = require("mongoose");
+const express = require('express');
 const app = express();
+const cors = require('cors');
+const mongoose = require('mongoose');
 app.use(express.json());
-const http = require("http");
-const { Server } = require("socket.io");
-const server = http.createServer(app);
-const io = new Server(server, {
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-  },
-});
 
-const userRouter = require("./Routers/UserRouter");
+const userRouter = require('./Routers/UserRouter');
+app.use(cors(
+    {
+        origin: '*',
+        credentials: true
+    }
+));
 
-app.use("/user", userRouter);
 
-server.listen(3002, () => {
-  console.log("Server is running on port 3002");
-});
+app.use('/user', userRouter);
+
+
+
+
+app.listen(3002, () => {
+    console.log('server started at 3002');
+}
+);

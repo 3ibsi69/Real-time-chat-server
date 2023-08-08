@@ -13,6 +13,8 @@ const io=new Server(server,{
 });
 
 
+app.use("/user",userRouter);
+
 
 
 

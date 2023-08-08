@@ -24,22 +24,22 @@ const signup=async(req,res)=>{
     });
 }
 
-const login=async(req,res)=>{
-    var user=await User.findOne({email:req.body.email});
-    if(user){
-        bcrypt.compare(req.body.password,user.password,(err,result)=>{
-            if(result){
-                var token=jwt.sign({id:user._id},"c21");    
-                res.send(token);
-            }
-            else{
-                res.send({msg:"Wrong Password"});
-            }
-        });
-        }else{
-            res.send({msg:"Wrong Email"});
-        }
-    };
+const login = async (req, res) => {
+  var user = await User.findOne({ email: req.body.email });
+  if (user) {
+    bcrypt.compare(req.body.password, user.password, (err, result) => {
+      if (result) {
+        var token = jwt.sign({ id: user._id }, "c21");
+        res.send({ token }); // Send the token on successful login
+      } else {
+        res.status(401).send({ msg: "Wrong Password" }); // Send an error response
+      }
+    });
+  } else {
+    res.status(401).send({ msg: "Wrong Email" }); // Send an error response
+  }
+};
+
     const verify = async (req, res) => {
         if (!req.body.token) {
           res.send({ msg: false });

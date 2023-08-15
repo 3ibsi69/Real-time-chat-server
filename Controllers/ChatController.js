@@ -11,7 +11,7 @@ const creatChat=async(req,res)=>{
         if(chat) res.status(200).json(chat);
 
         const newChat=new Chat({
-            members:[firstId,secondId];
+            members:[firstId,secondId]
         })
 
         const response=await newChat.save();

@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 app.use(express.json());
 
 const userRouter = require('./Routers/UserRouter');
+const chatRoute=require("./Routers/ChatRouter")
+
 app.use(cors(
     {
         origin: '*',
@@ -14,6 +16,8 @@ app.use(cors(
 
 
 app.use('/user', userRouter);
+app.use('/chat',chatRoute);
+
 
 
 

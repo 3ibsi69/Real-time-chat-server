@@ -5,8 +5,8 @@ const mongoose = require('mongoose');
 app.use(express.json());
 
 const userRouter = require('./Routers/UserRouter');
-const chatRoute=require("./Routers/ChatRouter")
-const MessageRoute=require("./Routers/MessageRouter")
+const chatRoute=require("./Routers/ChatRouter");
+const MessageRoute=require("./Routers/MessageRouter");
 
 app.use(cors(
     {

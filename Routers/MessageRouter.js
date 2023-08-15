@@ -1,10 +1,11 @@
 const router=require("express").Router();
 
-const {createMessage,getAllMessages}=require("..//Controllers/MessageController");
+const messageController=require("../Controllers/MessageController")
 
 
-router.post("/",createMessage);
-router.get("/:chatId",getAllMessages);
+router.post("/",messageController.createMessage);
+router.get("/:chatId",messageController.getmessages);
+
 
 
 module.exports=router;

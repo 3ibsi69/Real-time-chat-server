@@ -6,6 +6,7 @@ app.use(express.json());
 
 const userRouter = require('./Routers/UserRouter');
 const chatRoute=require("./Routers/ChatRouter")
+const MessageRoute=require("./Routers/MessageRouter")
 
 app.use(cors(
     {
@@ -17,6 +18,7 @@ app.use(cors(
 
 app.use('/user', userRouter);
 app.use('/chat',chatRoute);
+app.use('/message',MessageRoute);
 
 
 
